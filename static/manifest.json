@@ -1,0 +1,21 @@
+{
+  "name": "F1 24 Telemetry & Championship",
+  "short_name": "F1 24 Dash",
+  "description": "Multi-player telemetry and championship manager for F1 24.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0B0E14",
+  "theme_color": "#E10600",
+  "icons": [
+    {
+      "src": "/static/images/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/static/images/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

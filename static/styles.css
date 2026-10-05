@@ -1,0 +1,396 @@
+:root {
+    /* Color Palette */
+    --bg-main: #0B0E14; /* Deep Slate */
+    --bg-card: rgba(21, 25, 34, 0.6); /* Glassmorphism Base */
+    --bg-card-hover: rgba(38, 43, 56, 0.8);
+    --border-color: rgba(255, 255, 255, 0.1);
+    
+    /* Text Colors */
+    --text-primary: #FFFFFF;
+    --text-secondary: #9BA1B0;
+    --text-muted: #5F6675;
+    
+    /* Accents */
+    --accent-red: #E10600; /* F1 Red */
+    --accent-yellow: #FCD116; /* F1 Yellow */
+    --accent-purple: #B146C2; /* Ideal Lap Purple */
+    --valid-green: #00D26A;
+    --invalid-red: #FF3B30;
+    
+    /* Typography */
+    --font-heading: 'Titillium Web', sans-serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+    background-image: 
+        radial-gradient(circle at 15% 50%, rgba(225, 6, 0, 0.05), transparent 25%),
+        radial-gradient(circle at 85% 30%, rgba(30, 65, 255, 0.05), transparent 25%);
+}
+
+/* Glassmorphism Utilities */
+.glass-panel {
+    background: var(--bg-card);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.glass-panel:hover {
+    box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.fade-in {
+    animation: fadeIn 0.4s ease-out forwards;
+}
+
+/* Typography */
+h1, h2, h3, .f1-bold {
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+}
+h2 {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+.value-large {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+/* Header */
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: rgba(11, 14, 20, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.logo h1 {
+    font-size: 1.5rem;
+    font-style: italic;
+    font-weight: 800;
+}
+.logo span { color: var(--accent-red); }
+
+.top-nav {
+    display: flex;
+    gap: 1rem;
+}
+.nav-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s;
+    text-transform: uppercase;
+}
+.nav-btn:hover { color: var(--text-primary); }
+.nav-btn.active {
+    color: var(--text-primary);
+    border-bottom: 2px solid var(--accent-red);
+}
+
+/* Controls */
+.controls {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+select, .action-btn, input[type="number"] {
+    background: rgba(255,255,255,0.05);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    outline: none;
+}
+select:focus, input:focus { border-color: var(--accent-red); }
+.action-btn {
+    background: var(--accent-red);
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: opacity 0.3s;
+}
+.action-btn:hover { opacity: 0.8; }
+
+/* Grid Layouts */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 250px 1fr 300px;
+    gap: 1.5rem;
+    padding: 1.5rem 2rem;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+@media (max-width: 1200px) {
+    .dashboard-grid { grid-template-columns: 1fr 1fr; }
+    .center-map-panel { grid-column: 1 / -1; order: -1; }
+}
+@media (max-width: 768px) {
+    .dashboard-grid { grid-template-columns: 1fr; }
+}
+
+/* Center Map Panel */
+.center-map-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+}
+#circuitMapImg {
+    max-width: 90%;
+    max-height: 250px;
+    filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));
+}
+
+/* Left Panel: Driver Info & Times */
+.driver-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+.driver-name-box {
+    display: flex;
+    flex-direction: column;
+}
+.driver-name {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    font-weight: 800;
+    line-height: 1.1;
+}
+.driver-team {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+}
+.driver-number {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--accent-red);
+}
+
+.lap-times-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+.lap-time-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+.lap-time-val {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+/* Tyres & Status */
+.status-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
+    align-items: center;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+}
+.tyre-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 3px solid;
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    font-weight: 800;
+    position: relative;
+    background: rgba(0,0,0,0.5);
+}
+.tyre-badge.soft { border-color: #E10600; color: #E10600; }
+.tyre-badge.medium { border-color: #FCD116; color: #FCD116; }
+.tyre-badge.hard { border-color: #FFFFFF; color: #FFFFFF; }
+.tyre-badge.inter { border-color: #00D26A; color: #00D26A; }
+.tyre-badge.wet { border-color: #005AFF; color: #005AFF; }
+
+.tyre-info {
+    display: flex;
+    flex-direction: column;
+}
+.tyre-wear {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+/* Right Panel: King of the Track */
+.king-panel {
+    border-top: 3px solid var(--accent-yellow);
+}
+.king-record {
+    background: rgba(0,0,0,0.3);
+    padding: 1.2rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+.king-label {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    letter-spacing: 1px;
+}
+.king-driver {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+.king-time {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--accent-yellow);
+}
+.king-sectors {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.king-sector {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    padding: 0.5rem;
+    background: rgba(255,255,255,0.03);
+    border-radius: 4px;
+}
+.king-ideal {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+}
+.ideal-color { color: var(--accent-purple); font-weight: bold; }
+
+/* Tables */
+.table-responsive {
+    overflow-x: auto;
+}
+.f1-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+.f1-table th {
+    text-align: left;
+    padding: 1rem 0.5rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+    border-bottom: 1px solid var(--border-color);
+}
+.f1-table td {
+    padding: 0.8rem 0.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    position: relative;
+}
+.team-color-strip {
+    position: absolute;
+    left: 0;
+    top: 10%;
+    bottom: 10%;
+    width: 4px;
+    border-radius: 2px;
+}
+.badge-wins {
+    background: var(--accent-yellow);
+    color: black;
+    padding: 2px 6px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+.team-color { display: none; /* Replaced by strip */ }
+
+/* Modals */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+}
+.modal-content {
+    background: var(--bg-card);
+    backdrop-filter: blur(15px);
+    margin: 10% auto;
+    padding: 2rem;
+    border: 1px solid var(--border-color);
+    width: 90%;
+    max-width: 500px;
+    border-radius: 12px;
+    position: relative;
+}
+.close {
+    position: absolute;
+    right: 1.5rem;
+    top: 1.5rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-secondary);
+}
+.form-group { margin-bottom: 1rem; }
+.form-group label { display: block; margin-bottom: 0.5rem; color: var(--text-secondary); font-size: 0.9rem; }
+.form-group select, .form-group input { width: 100%; }
+.form-group-inline { display: flex; gap: 1rem; margin-bottom: 1rem; }
+.form-group-inline > div { flex: 1; }

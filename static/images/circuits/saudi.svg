@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+    <defs>
+        <filter id="neon" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur1" />
+            <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur2" />
+            <feMerge><feMergeNode in="blur2" /><feMergeNode in="blur1" /><feMergeNode in="SourceGraphic" /></feMerge>
+        </filter>
+    </defs>
+    <path d="M 10 90 L 30 10 L 50 30 L 70 10 L 90 90 Z" 
+          fill="none" stroke="#00D26A" stroke-width="3" filter="url(#neon)"/>
+    <circle cx="30" cy="50" r="3" fill="#FFF"/>
+</svg>
