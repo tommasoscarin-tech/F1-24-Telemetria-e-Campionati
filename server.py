@@ -13,6 +13,14 @@ app = FastAPI(title="F1 24 Telemetry & Championship API")
 # Serve static files (HTML, CSS, JS)
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
+@app.get("/")
+def serve_index():
+    return FileResponse("static/index.html")
+
+@app.get("/manifest.json")
+def serve_manifest():
+    return FileResponse("manifest.json")
+
 UDP_IP = "0.0.0.0"
 UDP_PORT = 20777
 
