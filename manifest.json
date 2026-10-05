@@ -1,0 +1,16 @@
+{
+  "short_name": "F1 Telemetria",
+  "name": "F1 24 Telemetry & Championships",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#121212",
+  "theme_color": "#e10600",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/3/33/F1.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}
