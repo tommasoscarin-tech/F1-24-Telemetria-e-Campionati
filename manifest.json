@@ -1,48 +1,47 @@
 {
+  "id": "/",
   "short_name": "F1 Telemetria",
   "name": "F1 24 Telemetry & Championships",
   "description": "Piattaforma live di telemetria, analisi e campionati per F1 24.",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
   "background_color": "#121212",
   "theme_color": "#e10600",
   "orientation": "portrait",
+  "lang": "it",
+  "dir": "ltr",
+  "prefer_related_applications": false,
   "categories": ["sports", "utilities"],
   "icons": [
     {
-      "src": "/static/images/icon-192.png",
+      "src": "/static/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "/static/images/icon-512.png",
+      "src": "/static/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
     }
   ],
-  "shortcuts": [
+  "screenshots": [
     {
-      "name": "Classifica",
-      "short_name": "Classifica",
-      "description": "Visualizza la classifica mondiale",
-      "url": "/"
+      "src": "/static/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Dashboard F1 Telemetria"
     },
     {
-      "name": "Ultima Sessione",
-      "short_name": "Sessione",
-      "description": "Visualizza telemetria ultima sessione",
-      "url": "/session"
+      "src": "/static/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Dashboard F1 Telemetria Desktop"
     }
-  ],
-  "share_target": {
-    "action": "/share",
-    "method": "GET",
-    "params": {
-      "title": "title",
-      "text": "text",
-      "url": "url"
-    }
-  }
+  ]
 }
