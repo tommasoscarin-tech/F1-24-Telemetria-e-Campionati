@@ -1,0 +1,5 @@
+venv/
+__pycache__/
+f124_championship.db
+.DS_Store
+
