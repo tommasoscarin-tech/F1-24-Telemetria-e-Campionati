@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException, Request
+from fastapi import FastAPI, HTTPException, Request, Response
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
@@ -19,7 +19,11 @@ def serve_index():
 
 @app.get("/manifest.json")
 def serve_manifest():
-    return FileResponse("manifest.json")
+    return FileResponse("manifest.json", media_type="application/json")
+
+@app.get("/service-worker.js")
+def serve_sw():
+    return FileResponse("service-worker.js", media_type="application/javascript", headers={"Service-Worker-Allowed": "/"})
 
 UDP_IP = "0.0.0.0"
 UDP_PORT = 20777
