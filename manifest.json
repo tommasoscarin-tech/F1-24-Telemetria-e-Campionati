@@ -19,41 +19,29 @@
       "src": "/static/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "/static/icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "maskable"
+      "purpose": "any maskable"
     },
     {
       "src": "/static/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "/static/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "maskable"
+      "purpose": "any maskable"
     }
   ],
   "screenshots": [
     {
-      "src": "/static/screenshot-narrow.png",
-      "sizes": "720x1280",
+      "src": "/static/icon-512.png",
+      "sizes": "512x512",
       "type": "image/png",
       "form_factor": "narrow",
-      "label": "Dashboard F1 Telemetria Mobile"
+      "label": "Dashboard Mobile F1 Telemetria"
     },
     {
-      "src": "/static/screenshot-wide.png",
-      "sizes": "1280x720",
+      "src": "/static/icon-512.png",
+      "sizes": "512x512",
       "type": "image/png",
       "form_factor": "wide",
-      "label": "Dashboard F1 Telemetria Desktop"
+      "label": "Dashboard Desktop F1 Telemetria"
     }
   ]
 }
